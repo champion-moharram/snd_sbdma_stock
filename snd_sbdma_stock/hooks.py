@@ -11,7 +11,43 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/snd_sbdma_stock/css/snd_sbdma_stock.css"
 # app_include_js = "/assets/snd_sbdma_stock/js/snd_sbdma_stock.js"
+app_include_js = "erpnext.bundle.js"
+app_include_css = "erpnext.bundle.css"
+web_include_js = "erpnext-web.bundle.js"
+web_include_css = "erpnext-web.bundle.css"
+email_css = "erpnext_email.bundle.scss"
 
+
+doctype_js = {
+	"Address": "public/js/address.js",
+	"Communication": "public/js/communication.js",
+	"Event": "public/js/event.js",
+	"Newsletter": "public/js/newsletter.js",
+	"Contact": "public/js/contact.js",
+}
+
+override_doctype_class = {"Address": "snd_sbdma_stock.accounts.custom.address.ERPNextAddress"}
+
+website_route_rules = [
+	{"from_route": "/addresses", "to_route": "Address"},
+	{
+		"from_route": "/addresses/<path:name>",
+		"to_route": "addresses",
+		"defaults": {"doctype": "Address", "parents": [{"label": "Addresses", "route": "addresses"}]},
+	},	
+]
+
+treeviews = [
+	"Account",
+	"Cost Center",
+	"Warehouse",
+	"Item Group",
+	"Customer Group",
+	"Supplier Group",
+	"Sales Person",
+	"Territory",
+	"Department",
+]
 # include js, css files in header of web template
 # web_include_css = "/assets/snd_sbdma_stock/css/snd_sbdma_stock.css"
 # web_include_js = "/assets/snd_sbdma_stock/js/snd_sbdma_stock.js"

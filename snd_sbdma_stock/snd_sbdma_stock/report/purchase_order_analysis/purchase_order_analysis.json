@@ -1,0 +1,35 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2020-05-04 18:41:28.625119",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2024-10-05 20:33:55.206732",
+ "modified_by": "Administrator",
+ "module": "SND SBDMA Stock",
+ "name": "Purchase Order Analysis",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Purchase Order",
+ "report_name": "Purchase Order Analysis",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Purchase Manager"
+  },
+  {
+   "role": "Purchase User"
+  },
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "Supplier"
+  }
+ ]
+}

@@ -259,7 +259,7 @@ frappe.ui.form.on("Item", {
 		frm.toggle_enable(["has_serial_no", "serial_no_series"], !frm.doc.is_fixed_asset);
 
 		frappe.call({
-			method: "erpnext.stock.doctype.item.item.get_asset_naming_series",
+			method: "snd_sbdma_stock.snd_sbdma_stock.doctype.item.item.get_asset_naming_series",
 			callback: function (r) {
 				frm.set_value("is_stock_item", frm.doc.is_fixed_asset ? 0 : 1);
 				frm.events.set_asset_naming_series(frm, r.message);
@@ -347,7 +347,7 @@ $.extend(erpnext.item, {
 		) {
 			const row = locals[cdt][cdn];
 			return {
-				query: "erpnext.controllers.queries.get_expense_account",
+				query: "snd_sbdma_stock.controllers.queries.get_expense_account",
 				filters: { company: row.company },
 			};
 		};
@@ -359,7 +359,7 @@ $.extend(erpnext.item, {
 		) {
 			const row = locals[cdt][cdn];
 			return {
-				query: "erpnext.controllers.queries.get_income_account",
+				query: "snd_sbdma_stock.controllers.queries.get_income_account",
 				filters: { company: row.company },
 			};
 		};
@@ -451,11 +451,11 @@ $.extend(erpnext.item, {
 		};
 
 		frm.fields_dict.customer_items.grid.get_field("customer_name").get_query = function (doc, cdt, cdn) {
-			return { query: "erpnext.controllers.queries.customer_query" };
+			return { query: "snd_sbdma_stock.controllers.queries.customer_query" };
 		};
 
 		frm.fields_dict.supplier_items.grid.get_field("supplier").get_query = function (doc, cdt, cdn) {
-			return { query: "erpnext.controllers.queries.supplier_query" };
+			return { query: "snd_sbdma_stock.controllers.queries.supplier_query" };
 		};
 
 		frm.fields_dict["item_defaults"].grid.get_field("default_warehouse").get_query = function (
@@ -524,17 +524,6 @@ $.extend(erpnext.item, {
 					method: "snd_sbdma_stock.snd_sbdma_stock.dashboard.item_dashboard.get_data",
 					template: "item_dashboard_list",
 				});
-				// if (typeof erpnext.stock.ItemDashboard === 'function') {
-				// 	erpnext.item.item_dashboard = new erpnext.stock.ItemDashboard({
-				// 		parent: section,
-				// 		item_code: frm.doc.name,
-				// 		page_length: 20,
-				// 		method: "snd_sbdma_stock.snd_sbdma_stock.dashboard.item_dashboard.get_data",
-				// 		template: "item_dashboard_list",
-				// 	});
-				// } else {
-				// 	console.error("ItemDashboard is not a valid constructor");
-				// }
 				erpnext.item.item_dashboard.refresh();
 			});
 		}
@@ -584,7 +573,7 @@ $.extend(erpnext.item, {
 			// call the server to make the variant
 			data.template = frm.doc.name;
 			frappe.call({
-				method: "erpnext.controllers.item_variant.get_variant",
+				method: "snd_sbdma_stock.controllers.item_variant.get_variant",
 				args: data,
 				callback: function (r) {
 					var doclist = frappe.model.sync(r.message);
@@ -662,7 +651,7 @@ $.extend(erpnext.item, {
 
 				me.multiple_variant_dialog.hide();
 				frappe.call({
-					method: "erpnext.controllers.item_variant.enqueue_multiple_variant_creation",
+					method: "snd_sbdma_stock.controllers.item_variant.enqueue_multiple_variant_creation",
 					args: {
 						item: frm.doc.name,
 						args: selected_attributes,
@@ -789,7 +778,7 @@ $.extend(erpnext.item, {
 			var args = d.get_values();
 			if (!args) return;
 			frappe.call({
-				method: "erpnext.controllers.item_variant.get_variant",
+				method: "snd_sbdma_stock.controllers.item_variant.get_variant",
 				btn: d.get_primary_btn(),
 				args: {
 					template: frm.doc.name,
@@ -817,7 +806,7 @@ $.extend(erpnext.item, {
 					} else {
 						d.hide();
 						frappe.call({
-							method: "erpnext.controllers.item_variant.create_variant",
+							method: "snd_sbdma_stock.controllers.item_variant.create_variant",
 							args: {
 								item: frm.doc.name,
 								args: d.get_values(),
@@ -854,7 +843,7 @@ $.extend(erpnext.item, {
 				.on("input", function (e) {
 					var term = e.target.value;
 					frappe.call({
-						method: "erpnext.stock.doctype.item.item.get_item_attribute",
+						method: "snd_sbdma_stock.snd_sbdma_stock.doctype.item.item.get_item_attribute",
 						args: {
 							parent: i,
 							attribute_value: term,
@@ -929,7 +918,7 @@ frappe.ui.form.on("UOM Conversion Detail", {
 		var row = locals[cdt][cdn];
 		if (row.uom) {
 			frappe.call({
-				method: "erpnext.stock.doctype.item.item.get_uom_conv_factor",
+				method: "snd_sbdma_stock.snd_sbdma_stock.doctype.item.item.get_uom_conv_factor",
 				args: {
 					uom: row.uom,
 					stock_uom: frm.doc.stock_uom,

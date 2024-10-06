@@ -174,7 +174,7 @@ $.extend(shopping_cart, {
 
 	show_cart_navbar: function () {
 		frappe.call({
-			method: "snd_sbdma_stock.e_commerce.doctype.e_commerce_settings.e_commerce_settings.is_cart_enabled",
+			method: "snd_sbdma_stock.snd_sbdma_stock.doctype.e_commerce_settings.e_commerce_settings.is_cart_enabled",
 			callback: function (r) {
 				$(".shopping-cart").toggleClass("hidden", r.message ? false : true);
 			},

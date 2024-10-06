@@ -163,8 +163,8 @@ class ECommerceSettings(Document):
 # 	frappe.get_doc("E Commerce Settings", "E Commerce Settings").run_method("validate")
 
 
-# def get_shopping_cart_settings():
-# 	return frappe.get_cached_doc("E Commerce Settings")
+def get_shopping_cart_settings():
+	return frappe.get_cached_doc("E Commerce Settings")
 
 
 # @frappe.whitelist(allow_guest=True)

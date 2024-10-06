@@ -13,7 +13,7 @@ app_license = "mit"
 # app_include_js = "/assets/snd_sbdma_stock/js/snd_sbdma_stock.js"
 app_include_js = "erpnext.bundle.js"
 app_include_css = "erpnext.bundle.css"
-web_include_js = "erpnext-web.bundle.js"
+# web_include_js = "erpnext-web.bundle.js"
 web_include_css = "erpnext-web.bundle.css"
 email_css = "erpnext_email.bundle.scss"
 

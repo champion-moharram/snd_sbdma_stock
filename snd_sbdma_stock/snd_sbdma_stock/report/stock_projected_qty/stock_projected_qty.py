@@ -7,8 +7,8 @@ from frappe import _
 from frappe.utils import flt, today
 from pypika.terms import ExistsCriterion
 
-from erpnext.accounts.doctype.pos_invoice.pos_invoice import get_pos_reserved_qty
-from erpnext.stock.utils import (
+# from snd_sbdma_stock.snd_sbdma_stock.doctype.pos_invoice.pos_invoice import get_pos_reserved_qty
+from snd_sbdma_stock.snd_sbdma_stock.utils import (
 	is_reposting_item_valuation_in_progress,
 	update_included_uom_in_report,
 )
